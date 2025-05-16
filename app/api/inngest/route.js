@@ -1,4 +1,4 @@
-import { serve } from "inngest / next";
+import { serve } from "inngest/next";
 import {
 	inngest,
 	syncUserDelete,
