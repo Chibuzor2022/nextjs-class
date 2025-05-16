@@ -1,27 +1,9 @@
-"use client"; // "use client" tells Next.js this is a *Client Component*
-// It must be declared at the top if you use:
-// - React hooks (like useState, useEffect)
-// - Context hooks (like useAppContext)
-// - useParams or any navigation feature from next/navigation
-// Without this directive, Next.js assumes the file is a Server Component.
-
-
-// import { useEffect, useState } from "react";
-// import { assets } from "@/assets/assets";
-// import ProductCard from "@/components/ProductCard";
-// import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
-// import Image from "next/image";
-// import { useParams } from "next/navigation"; // useParams is Client-only
-// import Loading from "@/components/Loading";
-// import { useAppContext } from "@/context/AppContext"; // custom hook using React context
-// import React from "react";
 
 import { useEffect, useState } from "react";
 import { assets } from "../../../assets/assets"
 import ProductCard from "../../components/ProductCard";
 import Navbar from "../../components/Navbar";
-import Footer from "../";
+import Footer from "../../components/Footer";
 import Image from "next/image";
 import { useParams } from "next/navigation"; // useParams is Client-only
 import Loading from "../../components/Loading"

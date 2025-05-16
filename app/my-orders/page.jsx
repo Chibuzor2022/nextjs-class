@@ -53,7 +53,7 @@ const MyOrders = () => {
                         {order.items
                           .map(
                             (item) =>
-                              item.product.name + " x " + ${item.quantity}
+                              item.product.name + `x ${item.quantity}`
                           )
                           .join(", ")}
                       </span>

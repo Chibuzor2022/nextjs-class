@@ -64,7 +64,7 @@ const OrderSummary = () => {
             {/* DropDown Menu */}
             {isDropdownOpen && (
               <ul className='absolute w-full bg-white border shadow-md mt-1 z-10 py-1.5'>
-                {userAddress.map((address, index) = (
+                {userAddress.map((address, index) =>(
                   <li
                     key={index}
                     className='px-4 py-2 hover:bg-gray-500/10 cursor-pointer'
