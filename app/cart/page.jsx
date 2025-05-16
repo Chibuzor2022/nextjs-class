@@ -194,6 +194,9 @@ const Cart = () => {
     getCartCount,
   } = useAppContext();
 
+  const imageSrc = product.image?.[0];
+
+
   return (
     <>
       <Navbar /> {/* Display top navigation bar */}
@@ -282,11 +285,20 @@ const Cart = () => {
                               updateCartQuantity(product._id, cartItems[itemId] - 1)
                             }
                           >
-                            <Image
+                            {/* <Image
                               src={assets.decrease_arrow}
                               alt="decrease_arrow"
                               className="w-4 h-4"
-                            />
+                            /> */}
+
+                            {typeof imageSrc === "string" && (
+  <Image
+    src={imageSrc}
+    alt={product.name}
+    className="w-16 h-auto object-cover mix-blend-multiply"
+  />
+)}
+
                           </button>
                           {/* Quantity input */}
                           <input
