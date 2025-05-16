@@ -182,8 +182,12 @@ import OrderSummary from "../components/OrderSummary"; // Import OrderSummary co
 import Image from "next/image"; // Import Image from Next.js
 import Navbar from "../components/Navbar"; // Import Navbar component
 import { useAppContext } from "../context/AppContext"; // Custom hook for React context
+const imageSrc = product.image?.[0];
 
 const Cart = () => {
+
+
+  
   // Destructure values from context: products list, router object, cartItems map, and cart manipulation functions
   const {
     products,
@@ -194,7 +198,8 @@ const Cart = () => {
     getCartCount,
   } = useAppContext();
 
-  const imageSrc = product.image?.[0];
+
+
 
 
   return (
@@ -248,11 +253,20 @@ const Cart = () => {
                       <td className="flex items-center gap-4 py-4 md:px-4 px-1">
                         {/* Product image */}
                         <div className="rounded-lg overflow-hidden bg-gray-500/10 p-2">
-                          <Image
+                          {/* <Image
                             src={product.image[0]}
                             alt={product.name}
                             className="w-16 h-auto object-cover mix-blend-multiply"
-                          />
+                          /> */}
+
+                                                     {typeof imageSrc === "string" && (
+  <Image
+    src={imageSrc}
+    alt={product.name}
+    className="w-16 h-auto object-cover mix-blend-multiply"
+  />
+)}
+
                         </div>
                         {/* Mobile remove button */}
                         <button
@@ -285,20 +299,13 @@ const Cart = () => {
                               updateCartQuantity(product._id, cartItems[itemId] - 1)
                             }
                           >
-                            {/* <Image
+                            <Image
                               src={assets.decrease_arrow}
                               alt="decrease_arrow"
                               className="w-4 h-4"
-                            /> */}
+                            />
 
-                            {typeof imageSrc === "string" && (
-  <Image
-    src={imageSrc}
-    alt={product.name}
-    className="w-16 h-auto object-cover mix-blend-multiply"
-  />
-)}
-
+ 
                           </button>
                           {/* Quantity input */}
                           <input
