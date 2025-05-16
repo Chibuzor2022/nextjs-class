@@ -41,7 +41,7 @@ const Product = () => {
             <div className="rounded-lg overflow-hidden bg-gray-50 mb-4">
               <Image
                 src={mainImage || productData.image[0]}
-                alt=""
+                alt="product Image"
                 className="w-full h-auto object-cover mix-blend-multiply"
                 width={1280}
                 height={720}

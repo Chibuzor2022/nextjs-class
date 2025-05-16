@@ -1,7 +1,7 @@
 "use client"; // Enables client-side rendering in Next.js (necessary for hooks like useState/useEffect)
 
 import React from "react"; // Import React
-import { assets } from "@/assets/assets"; // Import assets
+import { assets } from "../../assets/assets"; // Import assets
 import OrderSummary from "../components/OrderSummary"; // Import OrderSummary component
 import Image from "next/image"; // Import Image from Next.js
 import Navbar from "../components/Navbar"; // Import Navbar component
