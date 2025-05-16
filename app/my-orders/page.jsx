@@ -1,65 +1,105 @@
-'use client'	
-import { useState } from 'react';
+"use client";
 
-//This is just a sample data, you can replace it with actual data from your API or database 
-  const Page = () => {
-    const [orders, setOrders] = useState([
-      { id: 12345, date: '2023-10-01', total: 99.99 },
-      { id: 12346, date: '2023-10-02', total: 49.99 },
-      { id: 12347, date: '2023-10-03', total: 29.99 },
-      { id: 12348, date: '2023-10-04', total: 19.99 },
-      { id: 12349, date: '2023-10-05', total: 39.99 },
-      { id: 12350, date: '2023-10-06', total: 59.99 },
-      { id: 12351, date: '2023-10-07', total: 89.99 },
-      { id: 12352, date: '2023-10-08', total: 79.99 },
-      { id: 12353, date: '2023-10-09', total: 69.99 },
-      { id: 12354, date: '2023-10-10', total: 59.99 },
-    ]);
-    const [hasMore, setHasMore] = useState(true);
+import React, { useEffect, useState } from "react";
+// import { assets, orderDummyData } from "@/assets/assets";
+import { assets, orderDummyData } from "../../assets/assets";
+import Image from "next/image";
+import { useAppContext } from "../context/";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
 
-    const loadMoreOrders = () => {
-      const newOrders = [
-        { id: 12349, date: '2023-10-05', total: 39.99 },
-        { id: 12350, date: '2023-10-06', total: 59.99 },
-        { id: 12351, date: '2023-10-07', total: 89.99 },
-        { id: 12352, date: '2023-10-08', total: 79.99 },
-        { id: 12353, date: '2023-10-09', total: 69.99 },
-        { id: 12354, date: '2023-10-10', total: 59.99 }
-      ];
-      setOrders((prevOrders) => [...prevOrders, ...newOrders]);
-      setHasMore(false); // Simulate no more orders to load
-    };
-    return (
-      <div className='mx-auto max-w-7xl flex flex-col items-start px-6 md:px-16 lg:px-32 py-14'>
-        <div className='flex flex-col items-start pt-14'>
-          <p className='text-2xl font-medium'>My Orders</p>
-          <div className='w-16 h-2 rounded-2xl bg-orange-600'></div>
-          <p className='py-4 text-sm'>
-            You can find a summary of all your past orders below. Click on "View Details" to see more information about each order.
-          </p>
-        </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-col items-center gap-6 mt-6 pb-14 w-full'>
-          {orders.map((order) => (
-            <div key={order.id} className='bg-white shadow-md rounded-lg p-4 w-full max-w-sm'>
-              <h2 className='text-lg font-semibold'>Order #{order.id}</h2>
-              <p className='text-gray-600'>Date: {order.date}</p>
-              <p className='text-gray-600'>Total: ${order.total.toFixed(2)}</p>
-              <button className='mt-4 px-4 py-2 bg-orange-600 text-white rounded'>View Details</button>
-            </div>
-          ))}
-        </div>
-        {hasMore && (
-          <div className='flex justify-center items-center py-4'>
-            <button
-              onClick={loadMoreOrders}
-              className='px-4 py-2 bg-orange-600 text-white rounded'
-            >
-              Load More
-            </button>
-          </div>
-        )}
-      </div>
-    );
+const MyOrders = () => {
+  // useAppContext is a custom context hook – only works on the client
+  const { currency } = useAppContext();
+
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Simulating data fetch from dummy data
+  const fetchOrders = async () => {
+    setOrders(orderDummyData);
+    setLoading(false);
   };
 
-export default Page
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <div className="flex flex-col justify-between px-6 md:px-16 lg:px-32 py-6 min-h-screen">
+        <div className="space-y-5">
+          <h2 className="text-lg font-medium mt-6">My Orders</h2>
+
+          {loading ? (
+            <Loading />
+          ) : (
+            <div className="max-w-5xl border-t border-gray-300 text-sm">
+              {orders.map((order, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col md:flex-row gap-5 justify-between p-5 border-b border-gray-300"
+                >
+                  <div className="flex-1 flex gap-5 max-w-80">
+                    <Image
+                      className="max-w-16 max-h-16 object-cover"
+                      src={assets.box_icon}
+                      alt="box_icon"
+                    />
+                    <p className="flex flex-col gap-3">
+                      <span className="font-medium text-base">
+                        {order.items
+                          .map(
+                            (item) =>
+                              item.product.name + " x " + ${item.quantity}
+                          )
+                          .join(", ")}
+                      </span>
+                      <span>Items : {order.items.length}</span>
+                    </p>
+                  </div>
+
+                  <div>
+                    <p>
+                      <span className="font-medium">
+                        {order.address.fullName}
+                      </span>
+                      <br />
+                      <span>{order.address.area}</span>
+                      <br />
+                      <span>
+                        {order.address.city}, {order.address.state}
+                      </span>
+                      <br />
+                      <span>{order.address.phoneNumber}</span>
+                    </p>
+                  </div>
+
+                  <p className="font-medium my-auto">
+                    {currency}
+                    {order.amount}
+                  </p>
+
+                  <div className="flex flex-col">
+                    <span>Method : COD</span>
+                    <span>
+                      Date : {new Date(order.date).toLocaleDateString()}
+                    </span>
+                    <span>Payment : Pending</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default MyOrders;
+
+

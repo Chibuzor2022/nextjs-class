@@ -2,6 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { AppContextProvider } from "./context/AppContext";
 import { Toaster } from "react-hot-toast";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const outfit = Outfit({
 	subsets: ["latin"],
@@ -15,12 +16,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<AppContextProvider>
-			<Toaster />
-
-			<html lang="en">
-				<body className={`${outfit.className} antialiased`}>{children}</body>
-			</html>
-		</AppContextProvider>
+		<ClerkProvider>
+			<AppContextProvider>
+				<Toaster />
+				<html lang="en">
+					<body className={`${outfit.className} antialiased`}>{children}</body>
+				</html>
+			</AppContextProvider>
+		</ClerkProvider>
 	);
 }

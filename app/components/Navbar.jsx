@@ -4,11 +4,18 @@ import React from 'react';
 import Link from 'next/link';
 import { FaSearch } from "react-icons/fa";
 import { useAppContext } from '../context/AppContext';
+import { useClerk, UserButton } from '@clerk/nextjs';
+import { CartIcon } from '@/assets/assets';
 
 // import { GoPerson } from "react-icons/fa"
 
 const Navbar = () => {
-   const { router } = useAppContext();
+  const { router, user } = useAppContext();
+  // const { isSeller, router, user } = useAppContext();
+  // const { openSignIn, signOut } = useClerk();
+  const { openSignIn } = useClerk();
+  // const { isSignIn } = useUser();
+  
   const isSeller = true;
   return (
     <div className='flex  items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-200 text-gray-900'>
@@ -26,18 +33,44 @@ const Navbar = () => {
     
         
         {isSeller && (
-          <button className='text-xs px-4 py-2.5 rounded'>Seller DashBoard</button>
+          <button className='text-xs px-4 py-2.5 rounded'>Seller DashBoard
+          </button>
         )}
         
+        {/* <UserButton/> */}
       </div>
-
 
       <div className="flex items-center gap-4">
         <FaSearch />
-        <button className='flex items-center gap-2 hover:text-gray-700 transition'>
+        {user ? (
+          <>
+            <UserButton>
+            <UserButton.MenuItems>
+              <UserButton.Action
+                label="cart"
+                labelIcon={<CartIcon />}
+                onClick={()=>router.push("/cart")}              
+              />
+            </UserButton.MenuItems>
+            <UserButton.MenuItems>
+              <UserButton.Action
+                label="My Orders"
+                labelIcon={<BagIcon />}
+                onClick={()=>router.push("/my-orders")}
+              />
+            </UserButton.MenuItems>
+            </UserButton>          
+          
+          </>
+        ):(
+      <button
+        onClick={openSignIn}
+        className='flex items-center gap-2 hover:text-gray-700 transition'>
           {/* <GoPerson /> */}
-          Account
-        </button>
+         Login
+       
+      </button>
+        )}
       </div>
     </div>
  

@@ -16,11 +16,14 @@ const ProductCard = ({ product }) => {
         <Image src={product.image[0]}
           unoptimized={true}
           width={800}
-          height={800} />
+          height={800}
+        alt='piv'
+        />
+        
         <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
           <Image className='h-3 w-3' src={assets.heart_icon} alt='heart_icon' />
         </button>
-      
+             
       </div>
       <p>{product.name}</p>
       <p className="truncate-w-full text-sm text-gray-500">

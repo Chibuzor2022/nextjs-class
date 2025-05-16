@@ -15,38 +15,22 @@ const Slider = () => {
     },
     {
       id: 2,
-      title: "ps5",
+      title: "ps3",
       offer: "rtttyyUUU",
       primaryBtn: 'buy now',
       secondaryBtn: 'more info',
-      images: 'https://m.media-amazon.com/images/I/41ECK5cY-2L._AC_UY218_.jpg'
+      images: 'https://i.ebayimg.com/images/g/FCMAAOSwVZlmdZ~T/s-l1600.webp'
     },
     {
       id: 3,
-      title: "ps5",
+      title: "ps4",
       offer: "rtttyyUUU",
       primaryBtn: 'buy now',
       secondaryBtn: 'more info',
-      images: 'https://m.media-amazon.com/images/I/41ECK5cY-2L._AC_UY218_.jpg'
+      images: 'https://i.ebayimg.com/images/g/~SwAAOSwl05nb3ii/s-l1600.webp'
     },
     
-      {
-        id: 4,
-        title: "ps5",
-        offer: "rtttyyUUU",
-        primaryBtn: 'buy now',
-        secondaryBtn: 'more info',
-        images: 'https://m.media-amazon.com/images/I/41ECK5cY-2L._AC_UY218_.jpg'
-      },
-
-      {
-        id: 5,
-        title: "ps5",
-        offer: "rtttyyUUU",
-        primaryBtn: 'buy now',
-        secondaryBtn: 'more info',
-        images: 'https://m.media-amazon.com/images/I/41ECK5cY-2L._AC_UY218_.jpg'
-      },
+     
   ];
   const [currentSlide, setCurrentSlide] = useState(0); //keep track of the current slide index
 
