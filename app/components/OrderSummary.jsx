@@ -4,7 +4,7 @@ import { useAppContext } from '../context/AppContext';
 
 const OrderSummary = () => {
   const { currency, router, getCartCount, getCartAmount } = useAppContext();//getting currency symbol, router navigation, and cart utilities from context
-  const [selectAddress, setSelectAddress] = useState(null);//selected address state
+  const [selectedAddress, setSelectAddress] = useState(null);//selected address state
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); //checking whether the address dropdown is open
   const [userAddress, setUserAddress] = useState([]); //stores list of user addresses
 
@@ -41,7 +41,7 @@ const OrderSummary = () => {
             >
               {/* display selected address or placeholder */}
               <span>
-                {selectedAddress ? `${selectAddress.fullName}, ${selectAddress.area}, ${selectAddress.city}, ${selectAddress.state}` : "Select Address"}
+                {selectedAddress ? `${selectedAddress.fullName}, ${selectedAddress.area}, ${selectedAddress.city}, ${selectedAddress.state}` : "Select Address"}
               </span>
 
               {/* Down arrow icon with rotate animation */}

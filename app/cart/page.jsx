@@ -51,7 +51,7 @@ const Cart = () => {
             <tbody>
               {Object.keys(cartItems).map((itemId) => {
                 const product = products.find(
-                  ({ _id }) => product._id === itemId
+                  (product) => product._id === itemId
                  
                 );
 
