@@ -7,7 +7,7 @@ export const inngest = new Inngest({ id: "my-app" });
 
 // function for user creation
 
-export const synsUserCreation = inngest.createFunction(
+export const syncUserCreation = inngest.createFunction(
 	{
 		id: "sync-user-from-clerk",
 	},

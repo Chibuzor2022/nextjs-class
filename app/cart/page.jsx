@@ -1,5 +1,4 @@
-"use client"; // Enables client-side rendering in Next.js (necessary for hooks like useState/useEffect)
-
+"use client";
 // Importing React and necessary components/assets
 import React from "react";
 import { assets } from "../../assets/assets";
@@ -52,8 +51,8 @@ const Cart = () => {
             <tbody>
               {Object.keys(cartItems).map((itemId) => {
                 const product = products.find(
-                  // ({ _id }) => product._id === itemId
                   ({ _id }) => product._id === itemId
+                 
                 );
 
                 // Skip if product not found or quantity is 0
