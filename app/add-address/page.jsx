@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Footer from "../components/Footer"
-import Navbar from "../components/NavBar"
+import Navbar from "../components/Navbar"
 import Image from "next/image"
 import { assets } from "../../assets/assets"
 

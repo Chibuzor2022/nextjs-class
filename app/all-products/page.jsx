@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Navbar from '../components/NavBar'
+import Navbar from '../components/Navbar'
 import { useAppContext } from '../context/AppContext'
 import ProductCard from '../components/ProductCard'
 import Footer from '../components/Footer'
