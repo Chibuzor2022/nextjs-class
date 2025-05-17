@@ -34,8 +34,8 @@ const PopularProducts = () => {
           <div key={id} className='relative group'>
                            <Image unoptimized={true} src={image}
                        alt={title}
-                       width={800}
-                       height={800}
+                       width={400}
+                       height={400}
                        className='group-hover:brightess-75 transition duration-300 w-full; h-auto object cover'/>
 
    <div className='group-hover:-translate-y-4 transition duration-300 absolute bottom-8 left-8 text-white space-y-2'>

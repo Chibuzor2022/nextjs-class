@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaSearch } from "react-icons/fa";
+import { FaSearch,FaShoppingBag } from "react-icons/fa";
 import { useAppContext } from '../context/AppContext';
 import { useClerk, UserButton } from '@clerk/nextjs';
-import { CartIcon } from '@/assets/assets';
+import { CartIcon } from '../../assets/assets';
 
 // import { GoPerson } from "react-icons/fa"
 
@@ -55,7 +55,7 @@ const Navbar = () => {
             <UserButton.MenuItems>
               <UserButton.Action
                 label="My Orders"
-                labelIcon={<BagIcon />}
+                labelIcon={<FaShoppingBag />}
                 onClick={()=>router.push("/my-orders")}
               />
             </UserButton.MenuItems>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { assets } from "@/assets/assets";
+import { assets } from "../../assets/assets";
 import Image from "next/image";
 
 const Banner = () => {
@@ -16,18 +16,18 @@ const Banner = () => {
         </h2>
         <button className="group flex items-center justify-center gap-1 px-12 py-2,5 bg-orange-600 rounded text-white">Buy Now
           <Image
-            className='group-hover:translate-x-l transition'
+            className='group-hover:translate-x-l transition max-4-40'
             src={assets.arrow_icon_white}
             alt='arrow_icon_white'
           /></button>
       </div>
       <Image
-        className='hidden md:block max-80'
+        className='hidden md:block max-40'
         src={assets.md_controller_image}
         alt='md_controller_image'
       />
       <Image
-        className='md-hidden'
+        className='md-hidden max-w-40'
         src={assets.sm_controller_image}
         alt='sm_controller_image'
       />
